@@ -7,6 +7,7 @@ import SchemaFAQ from '@/components/ui/SchemaFAQ';
 import { BeforeAfterSlider } from '@/components/ui/BeforeAfterSlider';
 import { Paintbrush, LayoutGrid, CheckCircle2, ShieldCheck, MapPin, TrendingUp, Users, Calendar } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
+import Image from 'next/image';
 
 export async function generateMetadata() {
   const homeData = pagesData.find((p) => p.slug === 'index');
@@ -126,12 +127,10 @@ export default async function Home() {
             </div>
             <div className="relative">
                <div className="aspect-square bg-gray-200 rounded-3xl overflow-hidden shadow-2xl relative">
-                  <div className="absolute inset-0 bg-primary/10 flex items-center justify-center text-primary/40 font-bold text-xl">
-                     [Premium Team Photo Placeholder]
-                  </div>
+                  <Image src="/team.png" alt="Bahrain Painters Professional Team" fill className="object-cover" />
                </div>
                <div className="absolute -bottom-8 -left-8 bg-secondary p-8 rounded-2xl shadow-xl">
-                  <p className="text-4xl font-bold text-primary">500+</p>
+                  <p className="text-4xl font-bold text-primary">1,200+</p>
                   <p className="text-primary font-semibold">Projects Completed</p>
                </div>
             </div>

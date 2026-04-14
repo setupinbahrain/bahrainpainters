@@ -3,6 +3,9 @@
     "title": "Welcome to Bahrain Painters",
     "subtitle": "Professional interior, exterior, and commercial painting services across the Kingdom of Bahrain. Expert wallpaper installation to transform your space."
   },
+  "Hero": {
+    "cta1": "Get a Free Quote"
+  },
   "Nav": {
     "home": "Home",
     "services": "Services",

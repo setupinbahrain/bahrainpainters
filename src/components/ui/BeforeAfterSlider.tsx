@@ -38,8 +38,9 @@ export function BeforeAfterSlider() {
     >
       {/* After Image (Background) */}
       <div className="absolute inset-0 bg-gray-200">
-        <div className="absolute inset-0 flex items-center justify-center bg-primary/10">
-          <span className="text-secondary font-bold text-2xl drop-shadow-md">AFTER: Premium Wallpaper</span>
+        <Image src="/after.png" alt="Premium Wallpaper Installation" fill className="object-cover" />
+        <div className="absolute bottom-4 right-4 bg-black/60 text-white px-4 py-2 rounded-md font-bold text-sm shadow-xl backdrop-blur-sm z-10">
+          AFTER: Premium Wallpaper
         </div>
       </div>
 
@@ -48,8 +49,9 @@ export function BeforeAfterSlider() {
         className="absolute inset-0 bg-gray-300"
         style={{ clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)` }}
       >
-        <div className="absolute inset-0 flex items-center justify-center bg-white/50">
-          <span className="text-gray-600 font-bold text-2xl drop-shadow-md">BEFORE: Faded Paint</span>
+        <Image src="/before.png" alt="Faded Paint" fill className="object-cover" />
+        <div className="absolute bottom-4 left-4 bg-black/60 text-white px-4 py-2 rounded-md font-bold text-sm shadow-xl backdrop-blur-sm z-10">
+          BEFORE: Faded Paint
         </div>
       </div>
 
