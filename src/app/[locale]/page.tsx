@@ -26,6 +26,19 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'ar': 'https://bahrainpainters.com/ar',
       },
     },
+    openGraph: {
+      title: homeData.title,
+      description: homeData.meta,
+      url: `https://bahrainpainters.com${locale === 'ar' ? '/ar' : ''}`,
+      siteName: 'Bahrain Painters',
+      locale: locale === 'ar' ? 'ar_BH' : 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: homeData.title,
+      description: homeData.meta,
+    }
   };
 }
 

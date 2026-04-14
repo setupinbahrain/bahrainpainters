@@ -4,6 +4,39 @@ import pagesDataAr from '@/data/pages.ar.json';
 import { getTranslations } from 'next-intl/server';
 import { Paintbrush, PaintRoller, Droplet, LayoutGrid, Palette, HandMetal, Sparkles } from 'lucide-react';
 
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const title = locale === 'ar' ? 'خدماتنا | دهانات البحرين' : 'Our Services | Bahrain Painters';
+  const description = locale === 'ar' 
+    ? 'خدمات طلاء احترافية، عزل مائي، وتركيب ورق جدران فاخر في جميع أنحاء مملكة البحرين.' 
+    : 'Professional painting, waterproofing, and luxury wallpaper installation across the Kingdom of Bahrain.';
+    
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://bahrainpainters.com${locale === 'ar' ? '/ar' : ''}/services`,
+      languages: {
+        'en': 'https://bahrainpainters.com/services',
+        'ar': 'https://bahrainpainters.com/ar/services',
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url: `https://bahrainpainters.com${locale === 'ar' ? '/ar' : ''}/services`,
+      siteName: 'Bahrain Painters',
+      locale: locale === 'ar' ? 'ar_BH' : 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    }
+  };
+}
+
 export default async function ServicesPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const pagesData = locale === 'ar' ? pagesDataAr : pagesDataEn;

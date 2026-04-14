@@ -66,8 +66,15 @@ export async function generateMetadata({ params }: PageProps) {
     openGraph: {
       title: page.title,
       description: page.meta,
-      url: `https://bahrainpainters.com/${slug}`,
+      url: `https://bahrainpainters.com/${locale === 'ar' ? 'ar/' : ''}${decodedSlug}`,
+      siteName: 'Bahrain Painters',
+      locale: locale === 'ar' ? 'ar_BH' : 'en_US',
       type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: page.title,
+      description: page.meta,
     }
   };
 }
