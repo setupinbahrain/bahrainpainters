@@ -146,7 +146,7 @@ export default async function ServicePage({ params }: PageProps) {
       {page.faqs && page.faqs.length > 0 && (
         <section className="py-16 bg-white border-t border-gray-100">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-             <ServiceFAQ faqs={page.faqs} />
+             <ServiceFAQ faqs={page.faqs} title={locale === 'ar' ? 'الأسئلة الشائعة' : 'Frequently Asked Questions'} />
           </div>
         </section>
       )}
@@ -154,9 +154,13 @@ export default async function ServicePage({ params }: PageProps) {
       {/* Final CTA Strip */}
       <section className="py-12 bg-secondary text-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="text-center md:text-left">
-             <h2 className="text-2xl md:text-3xl font-bold">Ready to outrank the competition?</h2>
-             <p className="opacity-90 mt-2">Get your rapid turnaround project started today.</p>
+          <div className="text-center md:text-start">
+             <h2 className="text-2xl md:text-3xl font-bold">
+               {locale === 'ar' ? 'هل أنت مستعد للتفوق على منافسيك؟' : 'Ready to outrank the competition?'}
+             </h2>
+             <p className="opacity-90 mt-2">
+               {locale === 'ar' ? 'احصل على تسعيرة مجانية لمشروعك اليوم.' : 'Get your rapid turnaround project started today.'}
+             </p>
           </div>
           <Link href={`tel:+97335416863`} className="bg-primary text-white font-bold py-4 px-8 rounded-lg shadow-lg hover:bg-blue-900 transition flex items-center gap-2">
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.033 11.033 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>

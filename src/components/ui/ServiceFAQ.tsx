@@ -7,22 +7,22 @@ type FAQ = {
   a: string;
 };
 
-export default function ServiceFAQ({ faqs }: { faqs: FAQ[] }) {
+export default function ServiceFAQ({ faqs, title = "Frequently Asked Questions" }: { faqs: FAQ[], title?: string }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0); // Default to first open
 
   if (!faqs || faqs.length === 0) return null;
 
   return (
     <div className="w-full">
-      <h2 className="text-3xl font-bold mb-8 text-primary">Frequently Asked Questions</h2>
+      <h2 className="text-3xl font-bold mb-8 text-primary">{title}</h2>
       <div className="space-y-4">
         {faqs.map((faq, index) => (
           <div key={index} className="border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm">
             <button
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
-              className="w-full text-left p-4 md:p-6 flex justify-between items-center focus:outline-none"
+              className="w-full text-start p-4 md:p-6 flex justify-between items-center gap-4 focus:outline-none"
             >
-              <h3 className="text-lg font-bold text-gray-900 pr-4">{faq.q}</h3>
+              <h3 className="text-lg font-bold text-gray-900">{faq.q}</h3>
               <span className="text-secondary shrink-0">
                 {openIndex === index ? (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
