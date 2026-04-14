@@ -1,5 +1,6 @@
 import { Link } from '@/i18n/routing';
-import pagesData from '@/data/pages.json';
+import pagesDataEn from '@/data/pages.json';
+import pagesDataAr from '@/data/pages.ar.json';
 import { LeadQuoteForm } from '@/components/ui/LeadQuoteForm';
 import { TrustBadges } from '@/components/ui/TrustBadges';
 import ServiceFAQ from '@/components/ui/ServiceFAQ';
@@ -9,17 +10,29 @@ import { Paintbrush, LayoutGrid, CheckCircle2, ShieldCheck, MapPin, TrendingUp, 
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const pagesData = locale === 'ar' ? pagesDataAr : pagesDataEn;
   const homeData = pagesData.find((p) => p.slug === 'index');
   if (!homeData) return {};
   return {
     title: homeData.title,
     description: homeData.meta,
     keywords: homeData.keywords,
+    alternates: {
+      canonical: `https://bahrainpainters.com${locale === 'ar' ? '/ar' : ''}`,
+      languages: {
+        'en': 'https://bahrainpainters.com',
+        'ar': 'https://bahrainpainters.com/ar',
+      },
+    },
   };
 }
 
-export default async function Home() {
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const pagesData = locale === 'ar' ? pagesDataAr : pagesDataEn;
+  
   const t = await getTranslations('Index'); // Fallback if needed
   
   // Isolate the Homepage Data explicitly by its 'index' slug

@@ -1,9 +1,12 @@
 import { Link } from '@/i18n/routing';
-import pagesData from '@/data/pages.json';
+import pagesDataEn from '@/data/pages.json';
+import pagesDataAr from '@/data/pages.ar.json';
 import { getTranslations } from 'next-intl/server';
 import { Paintbrush, PaintRoller, Droplet, LayoutGrid, Palette, HandMetal, Sparkles } from 'lucide-react';
 
-export default async function ServicesPage() {
+export default async function ServicesPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const pagesData = locale === 'ar' ? pagesDataAr : pagesDataEn;
   const t = await getTranslations('Nav');
 
   // Filter out location pages and the home page

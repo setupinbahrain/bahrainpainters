@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
-import pagesData from '@/data/pages.json';
+import pagesDataEn from '@/data/pages.json';
+import pagesDataAr from '@/data/pages.ar.json';
 import { LeadQuoteForm } from '@/components/ui/LeadQuoteForm';
 import { TrustBadges } from '@/components/ui/TrustBadges';
 import ServiceFAQ from '@/components/ui/ServiceFAQ';
@@ -17,19 +18,38 @@ interface PageProps {
 
 export async function generateStaticParams() {
   const paths = [];
-  for (const page of pagesData) {
+  for (const page of pagesDataEn) {
     if (page.slug === 'index') continue;
-    paths.push({ slug: page.slug });
+    paths.push({ locale: 'en', slug: page.slug });
+  }
+  for (const page of pagesDataAr) {
+    if (page.slug === 'index') continue;
+    paths.push({ locale: 'ar', slug: page.slug });
   }
   return paths;
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const { slug } = await params;
-  const page = pagesData.find((p) => p.slug === slug);
+  const { slug, locale } = await params;
+  const decodedSlug = decodeURIComponent(slug);
+  const pagesData = locale === 'ar' ? pagesDataAr : pagesDataEn;
+  const page = pagesData.find((p) => p.slug === decodedSlug);
   
   if (!page) {
     return {};
+  }
+
+  // Calculate hreflang paths
+  let enSlug = decodedSlug;
+  let arSlug = decodedSlug;
+
+  if (locale === 'ar') {
+    enSlug = (page as any).englishSlug || 'index';
+    arSlug = decodedSlug;
+  } else {
+    enSlug = decodedSlug;
+    const arPage = pagesDataAr.find((p) => p.englishSlug === decodedSlug);
+    arSlug = arPage ? arPage.slug : 'index';
   }
 
   return {
@@ -37,10 +57,10 @@ export async function generateMetadata({ params }: PageProps) {
     description: page.meta,
     keywords: page.keywords,
     alternates: {
-      canonical: `https://bahrainpainters.com/${slug}`,
+      canonical: `https://bahrainpainters.com/${locale === 'ar' ? 'ar/' : ''}${decodedSlug}`,
       languages: {
-        'en': `https://bahrainpainters.com/${slug}`,
-        'ar': `https://bahrainpainters.com/ar/${slug}`,
+        'en': `https://bahrainpainters.com/${enSlug === 'index' ? '' : enSlug}`,
+        'ar': `https://bahrainpainters.com/ar/${arSlug === 'index' ? '' : arSlug}`,
       },
     },
     openGraph: {
@@ -54,7 +74,9 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function ServicePage({ params }: PageProps) {
   const { slug, locale } = await params;
-  const page = pagesData.find((p) => p.slug === slug);
+  const decodedSlug = decodeURIComponent(slug);
+  const pagesData = locale === 'ar' ? pagesDataAr : pagesDataEn;
+  const page = pagesData.find((p) => p.slug === decodedSlug);
   
   if (!page) {
     notFound();
