@@ -1,0 +1,55 @@
+{
+  "Index": {
+    "title": "Welcome to Bahrain Painters",
+    "subtitle": "Professional interior, exterior, and commercial painting services across the Kingdom of Bahrain. Expert wallpaper installation to transform your space."
+  },
+  "Nav": {
+    "home": "Home",
+    "services": "Services",
+    "projects": "Our Projects",
+    "contact": "Contact Us",
+    "get_quote": "Get a Free Quote"
+  },
+  "QuoteForm": {
+    "success_title": "Quote Requested Successfully!",
+    "success_desc": "Our team will call you within 2-4 hours to confirm your details.",
+    "submit_another": "Submit another request",
+    "step1_title": "What do you need help with?",
+    "step1_desc": "Select the primary service you are looking for.",
+    "service_interior": "Interior Painting",
+    "service_exterior": "Exterior Painting",
+    "service_wallpaper": "Wallpaper Services",
+    "service_commercial": "Commercial Projects",
+    "step2_title": "Tell us about the project",
+    "step2_desc": "Briefly describe the rooms or areas to be worked on.",
+    "placeholder_desc": "E.g., I need wallpaper installed in a 5x4m living room...",
+    "btn_back": "Back",
+    "btn_next": "Next Step",
+    "step3_title": "Your Contact Details",
+    "step3_desc": "We'll use this to send your final quote.",
+    "label_name": "Full Name",
+    "placeholder_name": "Ali Mohammed",
+    "label_phone": "Phone Number (Bahrain)",
+    "placeholder_phone": "+973 3XXX XXXX",
+    "btn_submit": "Get My Fast Quote"
+  },
+  "TrustBadges": {
+    "rating_title": "4.9/5 Rating",
+    "rating_desc": "Based on 50+ Google Reviews",
+    "licensed_title": "Licensed & Insured",
+    "licensed_desc": "100% Peace of mind",
+    "projects_title": "1,200+ Projects",
+    "projects_desc": "Successfully completed",
+    "ontime_title": "On-Time Guarantee",
+    "ontime_desc": "We respect your schedule"
+  },
+  "Footer": {
+    "company_info": "Company Info",
+    "quick_links": "Quick Links",
+    "services": "Our Services",
+    "contact": "Contact Details",
+    "copyright": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  }
+}
